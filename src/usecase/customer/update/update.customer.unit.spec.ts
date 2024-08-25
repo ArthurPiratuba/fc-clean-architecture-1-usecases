@@ -1,6 +1,7 @@
 import CustomerFactory from "../../../domain/customer/factory/customer.factory";
 import Address from "../../../domain/customer/value-object/address";
 import UpdateCustomerUseCase from "./update.customer.usecase";
+
 const customer = CustomerFactory.createWithAddress(
   "John",
   new Address("Street", 123, "Zip", "City")
@@ -30,9 +31,7 @@ describe("Unit test for customer update use case", () => {
   it("should update a customer", async () => {
     const customerRepository = MockRepository();
     const customerUpdateUseCase = new UpdateCustomerUseCase(customerRepository);
-
     const output = await customerUpdateUseCase.execute(input);
-
     expect(output).toEqual(input);
   });
 });
